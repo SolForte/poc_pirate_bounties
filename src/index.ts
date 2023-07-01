@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import bountyRouter from "./routes/bounty.router";
+import bountyRouter from "./routers/bounty.router";
 
 dotenv.config();
 
