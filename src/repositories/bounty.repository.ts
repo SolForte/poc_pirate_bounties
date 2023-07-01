@@ -13,7 +13,7 @@ async function getAllBounties() {
   return result.rows;
 }
 
-async function updateBounty(name: string, bounty: number) {
+async function updateBountyByName(name: string, bounty: number) {
   const result = await connection.query(
     `UPDATE bounties SET bounty = $1 WHERE name = $2 RETURNING *;`,
     [bounty, name]
@@ -21,15 +21,15 @@ async function updateBounty(name: string, bounty: number) {
   return result.rows[0];
 }
 
-async function deleteBounty(id: number) {
-  await connection.query(`DELETE FROM bounties WHERE id = $1;`, [id]);
+async function deleteBountyByName(name: string) {
+  await connection.query(`DELETE FROM bounties WHERE name = $1;`, [name]);
 }
 
 const bountyRepository = {
   createBounty,
   getAllBounties,
-  updateBounty,
-  deleteBounty,
+  updateBountyByName,
+  deleteBountyByName,
 };
 
 export default bountyRepository;
